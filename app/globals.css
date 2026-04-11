@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-primary:    #3b79a2;
+  --color-primary-dark:  #2c5f80;
+  --color-primary-light: #5a97bf;
+  --color-slate:      #525659;
+  --color-slate-light: #74787c;
+  --color-slate-dark: #363a3d;
+
+  /* Surfaces */
+  --color-surface:    #f4f2ee;
+  --color-cream:      #e8e4dc;
+
+  /* Typography */
+  --font-sans:   "Source Sans 3", sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  /* Spacing extras */
+  --spacing-section: 6rem;
+
+  /* Border radius */
+  --radius-card: 0.5rem;
+}
