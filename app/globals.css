@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap");
 
 @theme {
   /* Brand colors */
   --color-primary:    #3b79a2;
   --color-primary-dark:  #2c5f80;
+  --color-primary-darker: #1e4a63;
   --color-primary-light: #5a97bf;
   --color-slate:      #525659;
   --color-slate-light: #74787c;
@@ -14,8 +16,8 @@
   --color-cream:      #e8e4dc;
 
   /* Typography */
-  --font-sans:   "Source Sans 3", sans-serif;
-  --font-display: "Playfair Display", serif;
+  --font-sans:    "Poppins", sans-serif;
+  --font-display: "Montserrat", sans-serif;
 
   /* Spacing extras */
   --spacing-section: 6rem;

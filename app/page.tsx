@@ -1,31 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Header from "./components/Header";
+
+// other imports
 import { ParallaxBanner } from "react-scroll-parallax";
 
-const SERVICES = [
-  {
-    code: "01",
-    title: "Sample Processing",
-    desc: "Preparation, preservation, and laboratory processing of biological and environmental samples for research and analytical purposes.",
-  },
-  {
-    code: "02",
-    title: "Use of Equipment",
-    desc: "Access to specialized scientific instruments and analytical tools for fisheries, aquatic science, and allied research disciplines.",
-  },
-  {
-    code: "03",
-    title: "Use of Facility",
-    desc: "Reservation and use of the Center's research facilities, wet laboratories, and dedicated workspaces for academic and institutional projects.",
-  },
-  {
-    code: "04",
-    title: "Training",
-    desc: "Capacity-building programs, technical workshops, and skills training in fisheries research methods and aquatic science techniques.",
-  },
-];
+// utils
+import { SERVICES } from "./utils/Contants";
 
 const STATS = [
   { value: "6188", label: "sequenced covid samples for variant detection" },
@@ -85,9 +66,6 @@ export default function Home() {
   return (
     <div className="font-sans bg-white text-slate-dark antialiased">
 
-      {/* HEADER */}
-      <Header SERVICES={SERVICES} />
-
       {/* ── HERO ── */}
       <section
         id="home"
@@ -100,30 +78,30 @@ export default function Home() {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* layered overlay: dark bottom, lighter top */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-slate-dark/90 via-primary-dark/70 to-primary/40" />
+        {/* overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-slate-dark via-primary-darker/85 to-primary-dark/65" />
 
         <div className="relative z-15 max-w-7xl mx-auto w-full px-6 lg:px-10">
           <div className="max-w-2xl">
-            <span className="inline-block text-[0.65rem] uppercase tracking-[0.22em] text-white/50 mb-5 font-medium">
+            <span className="inline-block text-[0.70rem] uppercase tracking-[0.22em] text-white mb-5 font-medium">
               University of the Philippines Visayas
             </span>
 
-            <h1 className="font-display text-5xl lg:text-[4.25rem] font-bold text-white leading-[1.06] mb-6">
+            <h1 className="font-display text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.06] mb-6">
               Regional Research Center
             </h1>
 
             {/* thin ruled line — editorial touch */}
             <div className="w-12 h-px bg-white/30 mb-6" />
 
-            <p className="text-[0.95rem] leading-[1.85] text-white/70 font-light mb-10 max-w-md">
-              A multidisciplinary research facility supporting innovation in fisheries, aquatic science, and allied disciplines across the Visayas region.
+            <p className="text-[0.95rem] text- leading-[1.85] text-white font-light mb-10 max-w-lg">
+              The UP Visayas Regional Research Center is a multidisciplinary research facility of UP Visayas which supports the research and development endeavors of UPV in the field of fisheries and aquatic science R&D and its allied disciplines.
             </p>
 
             <div className="flex items-center gap-5 flex-wrap">
               <a
                 href="#services"
-                className="inline-flex items-center gap-2.5 bg-primary text-white text-[0.72rem] font-bold uppercase tracking-[0.14em] px-7 py-3.5 hover:bg-primary-dark transition-colors duration-200 no-underline"
+                className="inline-flex rounded-full items-center gap-2.5 bg-primary text-white text-[0.72rem] font-bold uppercase tracking-[0.14em] px-7 py-3.5 hover:bg-primary-dark transition-colors duration-200 no-underline"
               >
                 Our Services
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -134,14 +112,14 @@ export default function Home() {
                 href="#about"
                 className="text-white text-[0.72rem] font-semibold uppercase tracking-[0.14em] hover:text-white/60 transition-colors no-underline"
               >
-                About the Center →
+                About RRC →
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
+      {/* SERVICES */}
       <section id="services" className="bg-white border-b border-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
 
@@ -155,42 +133,51 @@ export default function Home() {
                 Core Services
               </h2>
             </div>
-            <a
-              href="#contact"
+            
+            <a  href="#contact"
               className="text-[0.7rem] uppercase tracking-[0.12em] text-slate font-semibold border-b border-slate/30 hover:text-primary hover:border-primary transition-colors no-underline pb-px whitespace-nowrap"
             >
               Request a Service →
             </a>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-cream">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {SERVICES.map((s) => (
               <div
                 key={s.code}
-                className="group bg-white p-8 lg:p-10 hover:bg-surface transition-colors duration-200 cursor-default"
+                className="group border border-cream rounded-2xl p-8 flex flex-col hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default"
               >
-                <span className="block font-display text-5xl font-bold text-primary group-hover:text-primary/90 transition-colors mb-8 leading-none select-none">
-                  {s.code}
-                </span>
-                <h3 className="font-display text-[1.05rem] font-bold text-slate-dark mb-3 group-hover:text-primary transition-colors leading-snug">
+                {/* icon area */}
+                <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors">
+                  <s.icon size={22} className="text-primary/60 group-hover:text-primary transition-colors" />
+                </div>
+
+                <h3 className="font-display text-[1.20rem] font-bold text-slate-dark mb-3 group-hover:text-primary transition-colors leading-snug">
                   {s.title}
                 </h3>
-                <p className="text-[0.82rem] leading-[1.85] text-slate font-light">
+
+                <p className="text-[0.82rem] leading-[1.85] text-slate font-light flex-1">
                   {s.desc}
                 </p>
-                <div className="mt-8 flex items-center gap-1.5 text-[0.68rem] uppercase tracking-[0.12em] text-primary font-semibold opacity-100 group-hover:opacity-90 transition-opacity">
-                  Learn More
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+
+                <div className="mt-8 pt-6 border-t border-cream flex items-center justify-between">
+                  <span className="text-[0.68rem] uppercase tracking-[0.12em] text-primary font-semibold">
+                    Learn More
+                  </span>
+                  <div className="w-7 h-7 rounded-full border border-primary/25 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-primary group-hover:text-white transition-colors">
+                      <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* ── STATS ── */}
+      {/* STATS */}
       <ParallaxBanner
         layers={[{ image: "/images/stat-bg.jpg", speed: -15 }]}
         className="relative min-h-[500px] py-20 lg:py-28 px-6 lg:px-10"
@@ -226,7 +213,7 @@ export default function Home() {
         </div>
       </ParallaxBanner>
 
-      {/* ── NEWS & ANNOUNCEMENTS ── */}
+      {/* NEWS & ANNOUNCEMENTS */}
       <section id="news" className="bg-surface border-b border-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
 
@@ -279,7 +266,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
+      {/* ABOUT */}
       <section id="about" className="bg-white border-b border-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
 
@@ -347,7 +334,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CONTACT ── */}
+      {/* CONTACT */}
       <section id="contact" className="bg-slate-dark border-b border-white/8">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
 
@@ -424,7 +411,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── LOCATION ── */}
+      {/* LOCATION */}
       <section id="location" className="bg-white border-b border-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
 
@@ -459,7 +446,7 @@ export default function Home() {
               <div>
                 <p className="text-[0.58rem] uppercase tracking-[0.16em] text-slate-light font-semibold mb-2">Getting Here</p>
                 <p className="text-[0.82rem] text-slate leading-relaxed font-light">
-                  Located within the UPV Miag-ao campus. From Iloilo City, take a bus or jeep bound for Miag-ao (approx. 1 hour). The RRC building is near the main gate.
+                  Located within the UPV Miag-ao campus. From Iloilo City, take a bus or jeep bound for Miag-ao (approx. 1 hour). The RRC building is near the university library.
                 </p>
               </div>
               <a
@@ -473,13 +460,13 @@ export default function Home() {
             </div>
 
             {/* Map embed */}
-            <div className="w-full h-80 lg:h-96 bg-surface border border-cream overflow-hidden">
+            <div className="w-full h-80 lg:h-96 bg-surface border border-cream rounded-xl overflow-hidden">
               <iframe
                 title="UPV Miag-ao Campus Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0!2d122.2333!3d10.6500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee1b2f1234567%3A0xabcdef1234567890!2sUniversity%20of%20the%20Philippines%20Visayas%2C%20Miag-ao!5e0!3m2!1sen!2sph!4v1234567890"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(1) contrast(1.1)" }}
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -502,7 +489,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="max-w-3xl divide-y divide-cream">
+          <div className="max-w divide-y divide-cream">
             {FAQS.map((f, i) => (
               <div key={i} className="py-1">
                 <button
@@ -530,63 +517,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="bg-slate-dark">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10 py-14 border-b border-white/8">
-            <div>
-              <p className="font-display text-sm font-bold text-white mb-3">UPV Regional Research Center</p>
-              <p className="text-[0.78rem] text-white/35 leading-relaxed max-w-xs font-light">
-                A multidisciplinary research facility of UP Visayas focused on fisheries and aquatic science R&D.
-                <br /><br />
-                Miag-ao, Iloilo, Philippines 5023
-              </p>
-            </div>
-            <div>
-              <p className="text-[0.56rem] uppercase tracking-[0.18em] text-white/25 font-semibold mb-5">Navigate</p>
-              <ul className="space-y-3 list-none p-0 m-0">
-                {["Home", "Services", "News & Announcements", "Location", "FAQs", "About Us"].map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-[0.78rem] text-white/38 hover:text-white transition-colors no-underline font-light">
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-[0.56rem] uppercase tracking-[0.18em] text-white/25 font-semibold mb-5">Contact</p>
-              <ul className="space-y-3 list-none p-0 m-0">
-                {[
-                  { val: "rrc@upv.edu.ph", href: "mailto:rrc@upv.edu.ph" },
-                  { val: "(033) 315-0000", href: "tel:+63333150000" },
-                  { val: "rrc.upv.edu.ph", href: "#" },
-                  { val: "Miag-ao, Iloilo 5023", href: "#" },
-                ].map((c) => (
-                  <li key={c.val}>
-                    <a href={c.href} className="text-[0.78rem] text-white/38 hover:text-white transition-colors no-underline font-light">
-                      {c.val}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <span className="text-[0.65rem] text-white/20">
-              © {new Date().getFullYear()} UPV Regional Research Center. All rights reserved.
-            </span>
-            <div className="flex gap-6">
-              {["Privacy Policy", "Terms of Use"].map((l) => (
-                <a key={l} href="#" className="text-[0.65rem] text-white/20 hover:text-white/55 transition-colors no-underline">
-                  {l}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -4,7 +4,9 @@ import { useState, useRef, useEffect } from "react";
 
 type Service = {
   code: string;
+  icon: React.ElementType;
   title: string;
+  desc: string;
 };
 
 type HeaderProps = {
@@ -44,7 +46,7 @@ export default function Header({ SERVICES }: HeaderProps) {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
           <a
-            href="#home"
+            href="/"
             className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] px-4 py-2 text-slate-dark hover:text-primary transition-colors no-underline"
           >
             Home
@@ -87,7 +89,7 @@ export default function Header({ SERVICES }: HeaderProps) {
           {[
             { label: "Laboratories", href: "#" },
             { label: "News & Announcements", href: "#" },
-            { label: "About Us", href: "#about" },
+            { label: "About Us", href: "/about" },
           ].map((link) => (
             <a
               key={link.label}
