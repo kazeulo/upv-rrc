@@ -6,58 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { ParallaxBanner } from "react-scroll-parallax";
 
 // utils
-import { SERVICES } from "./utils/Contants";
-
-const STATS = [
-  { value: "6188", label: "sequenced covid samples for variant detection" },
-  { value: "865", label: "served students through trainings and research assistance" },
-  { value: "233", label: "trained health professional" },
-  { value: "43", label: "ssisted research projects from both UPV and other SUCS" },
-];
-
-const NEWS = [
-  {
-    tag: "Announcement",
-    date: "June 2025",
-    title: "RRC Opens Applications for the 2025 Research Grant Program",
-    excerpt: "Qualified researchers from UPV and partner institutions may now submit proposals for the annual competitive grant.",
-  },
-  {
-    tag: "Event",
-    date: "May 2025",
-    title: "Workshop on Fish Tissue Sampling Methods Now Open for Registration",
-    excerpt: "A two-day hands-on workshop covering standard protocols for tissue preservation and histological preparation.",
-  },
-  {
-    tag: "Publication",
-    date: "April 2025",
-    title: "New Study on Mangrove Carbon Sequestration Published in Asian Fisheries Science",
-    excerpt: "RRC researchers document carbon stock trends in rehabilitated mangrove sites along Iloilo's coastline.",
-  },
-];
-
-const FAQS = [
-  {
-    q: "Who can avail of RRC services?",
-    a: "RRC services are open to UPV faculty, students, and researchers, as well as external researchers from partner institutions and government agencies upon endorsement.",
-  },
-  {
-    q: "How do I reserve laboratory equipment or facilities?",
-    a: "Reservations are made through a formal request letter or online form submitted at least five working days before the intended use date. Availability is confirmed by the RRC administrator.",
-  },
-  {
-    q: "Are there fees for using RRC facilities?",
-    a: "Fees vary depending on the service and the affiliation of the requesting party. UPV-affiliated researchers may be eligible for subsidized rates. A schedule of fees is available at the RRC office.",
-  },
-  {
-    q: "Does the RRC accept collaboration with private institutions?",
-    a: "Yes. The RRC welcomes collaborative arrangements with private entities, subject to a memorandum of agreement and review by the UPV administration.",
-  },
-  {
-    q: "How can I access RRC publications?",
-    a: "Publications are available through the UPV library system, the RRC office, and select open-access repositories. Contact us at rrc@upv.edu.ph for specific requests.",
-  },
-];
+import { SERVICES, FAQS, STATS, NEWS } from "./utils/Contants";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -66,23 +15,24 @@ export default function Home() {
   return (
     <div className="font-sans bg-white text-slate-dark antialiased">
 
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section
         id="home"
         className="relative min-h-screen flex items-center"
-        style={{
-          backgroundImage: "url('/images/home-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-        }}
       >
+        {/* grayscale bg */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/home-bg.jpg')",
+            backgroundAttachment: "fixed",
+          }}
+        />
         {/* overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-slate-dark via-primary-darker/85 to-primary-dark/65" />
 
         <div className="relative z-15 max-w-7xl mx-auto w-full px-6 lg:px-10">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <span className="inline-block text-[0.70rem] uppercase tracking-[0.22em] text-white mb-5 font-medium">
               University of the Philippines Visayas
             </span>
@@ -179,10 +129,10 @@ export default function Home() {
 
       {/* STATS */}
       <ParallaxBanner
-        layers={[{ image: "/images/stat-bg.jpg", speed: -15 }]}
+        layers={[{ image: "/images/stat-bg.jpg", speed: -20 }]}
         className="relative min-h-[500px] py-20 lg:py-28 px-6 lg:px-10"
       >
-        <div className="absolute inset-0 bg-primary/75" />
+        <div className="absolute inset-0 bg-primary/70" />
 
         <div className="relative z-10 max-w-7xl mx-auto">
 
@@ -226,16 +176,54 @@ export default function Home() {
                 News & Announcements
               </h2>
             </div>
-            <a
-              href="#"
+            
+            <a href="#"
               className="text-[0.7rem] uppercase tracking-[0.12em] text-slate font-semibold border-b border-slate/30 hover:text-primary hover:border-primary transition-colors no-underline pb-px whitespace-nowrap"
             >
               All Posts →
             </a>
           </div>
 
+          {/* FEATURED / MAIN LATEST */}
+          <article className="group bg-white border border-cream hover:border-primary/20 transition-colors duration-200 cursor-pointer mb-15">
+            <div className="grid lg:grid-cols-2">
+              {/* Image placeholder */}
+              <div className="bg-cream/60 min-h-[260px] lg:min-h-[340px] relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-[0.6rem] uppercase tracking-[0.2em] text-slate-light font-semibold">
+                    Featured Image
+                  </span>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-10 lg:p-14 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-[0.6rem] uppercase tracking-[0.14em] text-primary font-semibold border border-primary/20 bg-primary/5 px-2.5 py-1">
+                    {NEWS[0].tag}
+                  </span>
+                  <span className="text-[0.65rem] text-slate-light font-light">
+                    {NEWS[0].date}
+                  </span>
+                </div>
+                <h3 className="font-display text-2xl lg:text-3xl font-bold text-slate-dark leading-snug mb-4 group-hover:text-primary transition-colors">
+                  {NEWS[0].title}
+                </h3>
+                <p className="text-[0.85rem] leading-[1.9] text-slate font-light mb-8">
+                  {NEWS[0].excerpt}
+                </p>
+                <div className="flex items-center gap-1.5 text-[0.68rem] uppercase tracking-[0.12em] text-primary font-semibold">
+                  Read More
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-0.5 transition-transform">
+                    <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          {/* THREE-COLUMN GRID */}
           <div className="grid md:grid-cols-3 gap-px bg-cream">
-            {NEWS.map((n, i) => (
+            {NEWS.slice(1).map((n, i) => (
               <article
                 key={i}
                 className="group bg-surface hover:bg-white transition-colors duration-200 p-8 lg:p-10 cursor-pointer flex flex-col"
@@ -263,6 +251,7 @@ export default function Home() {
               </article>
             ))}
           </div>
+
         </div>
       </section>
 

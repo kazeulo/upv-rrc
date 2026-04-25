@@ -33,7 +33,6 @@ export default function Footer() {
               {[
                 { val: "rrc@upv.edu.ph", href: "mailto:rrc@upv.edu.ph" },
                 { val: "(033) 315-0000", href: "tel:+63333150000" },
-                { val: "rrc.upv.edu.ph", href: "#" },
                 { val: "Miag-ao, Iloilo 5023", href: "#" },
               ].map((c) => (
                 <li key={c.val}>
