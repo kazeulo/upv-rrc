@@ -176,17 +176,6 @@ export default function SampleProcessingPage() {
 
       {/* HERO */}
       <section className="bg-primary-darker relative overflow-hidden">
-        {/* Subtle grid texture */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-
-        {/* Accent bar */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-light" />
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
           <div className="max-w-2xl">
@@ -228,58 +217,6 @@ export default function SampleProcessingPage() {
                 How to Avail
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT'S INCLUDED STRIP */}
-      <section className="bg-white border-b border-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
-          <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-cream">
-            {[
-              {
-                icon: (
-                  <path d="M3 4h10M3 8h10M3 12h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                ),
-                label: "Raw instrument data",
-                sub: "Unprocessed output directly from the equipment",
-                yes: true,
-              },
-              {
-                icon: (
-                  <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                ),
-                label: "Data interpretation",
-                sub: "Analysis, conclusions, or expert commentary",
-                yes: false,
-              },
-              {
-                icon: (
-                  <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                ),
-                label: "Certificate of Analysis",
-                sub: "Formal CoA or official compliance document",
-                yes: false,
-              },
-            ].map((item) => (
-              <div key={item.label} className="flex items-start gap-4 px-6 py-6 first:pl-0 last:pr-0">
-                <div className={`w-8 h-8 flex items-center justify-center flex-shrink-0 rounded-full ${item.yes ? "bg-primary/10" : "bg-cream"}`}>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className={item.yes ? "text-primary" : "text-slate-light"}>
-                    {item.yes ? (
-                      <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    ) : (
-                      <path d="M4.5 4.5l7 7M11.5 4.5l-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                    )}
-                  </svg>
-                </div>
-                <div>
-                  <p className={`text-[0.78rem] font-semibold mb-0.5 ${item.yes ? "text-slate-dark" : "text-slate-light line-through decoration-slate-light/50"}`}>
-                    {item.label}
-                  </p>
-                  <p className="text-[0.7rem] text-slate-light font-light leading-relaxed">{item.sub}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -359,13 +296,6 @@ export default function SampleProcessingPage() {
 
           {/* CTA */}
           <div className="mt-16 bg-primary-darker px-8 lg:px-12 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">
-            <div
-              className="absolute inset-0 opacity-[0.05]"
-              style={{
-                backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                backgroundSize: "32px 32px",
-              }}
-            />
             <div className="relative">
               <p className="font-display text-[1.1rem] font-bold text-white mb-1">
                 Ready to submit your samples?

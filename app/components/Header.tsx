@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 
 const NAV_SERVICES = [
-  { label: "Sample Processing", href: "/services" },
+  { label: "Sample Processing", href: "/services/sample-processing" },
   { label: "Training", href: "/services/training" },
   { label: "Use of Facility", href: "/services/use-of-facility" },
   { label: "Use of Equipment", href: "/services/use-of-equipment" },

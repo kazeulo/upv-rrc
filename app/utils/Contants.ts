@@ -4,6 +4,7 @@
 
 import { FlaskConical, Microscope, Building2, GraduationCap } from "lucide-react";
 
+// services
 export const SERVICES = [
   {
     code: "01",
@@ -31,6 +32,7 @@ export const SERVICES = [
   },
 ];
 
+// statistics section
 export const STATS = [
   { value: "6188", label: "sequenced covid samples for variant detection" },
   { value: "865", label: "served students through trainings and research assistance" },
@@ -38,6 +40,7 @@ export const STATS = [
   { value: "43", label: "assisted research projects from both UPV and other SUCS" },
 ];
 
+// news section
 export const NEWS = [
   {
     tag: "Announcement",
@@ -59,6 +62,7 @@ export const NEWS = [
   },
 ];
 
+// faqs section
 export const FAQS = [
   {
     q: "Who can avail of RRC services?",
