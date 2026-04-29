@@ -175,49 +175,80 @@ export default function SampleProcessingPage() {
     <main className="bg-surface min-h-screen">
 
       {/* HERO */}
-      <section className="bg-primary-darker relative overflow-hidden">
+      <section className="relative overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/lab-hero.jpg')" }}
+        />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-          <div className="max-w-2xl">
-            <span className="inline-block text-[0.58rem] uppercase tracking-[0.25em] text-primary-light font-semibold mb-5 border border-primary-light/30 px-3 py-1">
-              RRC Services
+        {/* Flat dark overlay — no gradient, intentionally duller than homepage */}
+        <div className="absolute inset-0 bg-primary-darker/90" />
+
+        {/* Bottom border accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 mb-8">
+            <a href="/" className="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 hover:text-white/70 transition-colors no-underline font-medium">
+              UPV RRC
+            </a>
+            <span className="text-white/25 text-[0.65rem]">/</span>
+            <span className="text-[0.65rem] uppercase tracking-[0.18em] text-white/60 font-medium">
+              Services
             </span>
-            <h1 className="font-display text-4xl lg:text-[3.25rem] font-bold text-white leading-[1.1] mb-6">
-              Sample<br />Processing
-            </h1>
-            <p className="text-[0.875rem] leading-[1.95] text-white/70 font-light max-w-lg">
-              Send your samples for instrument-based processing. Raw data and results are generated
-              directly from the equipment — no interpretation, data processing, or Certificate of
-              Analysis is included.
-            </p>
+            <span className="text-white/25 text-[0.65rem]">/</span>
+            <span className="text-[0.65rem] uppercase tracking-[0.18em] text-primary-light font-medium">
+              Sample Processing
+            </span>
+          </div>
 
-            <div className="mt-10 flex items-start gap-3 bg-white/8 border border-white/15 px-5 py-4 max-w-lg">
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" className="text-primary-light mt-0.5 flex-shrink-0">
-                <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
-                <path d="M8 5v3.5M8 11v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-              <p className="text-[0.75rem] leading-[1.75] text-white/60 font-light">
-                Samples must be prepared and ready for analysis prior to submission. Provide any
-                specific protocols or guidelines at the time of drop-off.
-              </p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 max-w-5xl">
+            {/* Left — title block */}
+            <div>
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-white leading-[1.08]">
+                Sample<br />Processing
+              </h1>
             </div>
 
-            {/* Jump links */}
-            <div className="mt-10 flex gap-3 flex-wrap">
-              
-              <a  href="#pricing"
-                className="text-[0.7rem] uppercase tracking-[0.12em] font-semibold text-white bg-primary px-6 py-3 hover:bg-primary-dark transition-colors no-underline"
-              >
-                View Pricing
-              </a>
-              
-              <a  href="#how-to-avail"
-                className="text-[0.7rem] uppercase tracking-[0.12em] font-semibold text-white/80 border border-white/25 px-6 py-3 hover:border-white/50 hover:text-white transition-colors no-underline"
-              >
-                How to Avail
-              </a>
+            {/* Right — desc + actions */}
+            <div className="max-w-md lg:pb-1">
+              <p className="text-[0.82rem] leading-[1.9] text-white/60 font-light mb-6">
+                Raw data and results generated directly from the equipment — no interpretation,
+                data processing, or Certificate of Analysis included.
+              </p>
+
+              <div className="flex gap-3 flex-wrap">
+                
+                <a  href="#pricing"
+                  className="text-[0.68rem] uppercase tracking-[0.12em] font-semibold text-white bg-primary px-6 py-2.5 hover:bg-primary-dark transition-colors no-underline"
+                >
+                  View Pricing
+                </a>
+                
+                <a  href="#how-to-avail"
+                  className="text-[0.68rem] uppercase tracking-[0.12em] font-semibold text-white/70 border border-white/20 px-6 py-2.5 hover:border-white/45 hover:text-white transition-colors no-underline"
+                >
+                  How to Avail
+                </a>
+              </div>
             </div>
           </div>
+
+          {/* Notice — separated below the title row */}
+          <div className="mt-8 flex items-start gap-3 border-t border-white/10 pt-6 max-w-2xl">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" className="text-primary-light mt-0.5 flex-shrink-0">
+              <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
+              <path d="M8 5v3.5M8 11v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <p className="text-[0.72rem] leading-[1.75] text-white/45 font-light">
+              Samples must be prepared and ready for analysis prior to submission. Provide any
+              specific protocols or guidelines at the time of drop-off.
+            </p>
+          </div>
+
         </div>
       </section>
 
