@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Git internals
+.git/
+
+# Static assets
+public/images/
+public/*.svg
+public/*.ico
+
+# Lock files
+package-lock.json
+
+# Environment variables
+.env*
