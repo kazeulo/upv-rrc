@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Icons 
 function IconMenu() {
@@ -226,10 +226,17 @@ function LabsMega({ onClose }: { onClose: () => void }) {
 
 // Header 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<DropdownKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const openMenu = (key: DropdownKey) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -245,6 +252,8 @@ export default function Header() {
     setOpenDropdown(null);
   };
 
+  const solid = scrolled || !!openDropdown;
+
   return (
     <>
       {/* Page backdrop when dropdown is open */}
@@ -255,33 +264,47 @@ export default function Header() {
         onClick={closeNow}
       />
 
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--color-border)]"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)" }}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow] duration-400 ease-in-out ${
+          solid
+            ? "bg-white border-b border-[var(--color-border)] shadow-[0_1px_3px_rgba(0,0,0,0.06),0_4px_12px_rgba(0,0,0,0.04)]"
+            : "bg-transparent border-b border-transparent shadow-none"
+        }`}
       >
-        {/* ── Main nav bar ── */}
+        {/*  Main nav bar  */}
         <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16 lg:h-[72px]">
-          {/* Logo */}
-          <a href="#" className="flex items-center shrink-0">
+          {/* Logo — cross-fade between colour and b&w */}
+          <a href="/" className="relative flex items-center shrink-0 h-10 lg:h-11">
             <img
               src="/images/rrc_logo.png"
               alt="UPV Regional Research Center"
-              className="h-13 lg:h-15 w-auto object-contain"
+              className={`h-full w-auto object-contain transition-opacity duration-400 ease-in-out ${solid ? "opacity-100" : "opacity-0"}`}
+            />
+            <img
+              src="/images/rrc_logo_bnw.png"
+              alt=""
+              aria-hidden="true"
+              className={`absolute inset-0 h-full w-auto object-contain transition-opacity duration-400 ease-in-out ${solid ? "opacity-0" : "opacity-100"}`}
             />
           </a>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            <a href="/" className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50 transition-colors duration-150">
+            <a href="/" className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out ${
+              solid ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50" : "text-white/85 hover:text-white hover:bg-white/10"
+            }`}>
               Home
             </a>
 
             {/* Services trigger */}
             <div onMouseEnter={() => openMenu("services")} onMouseLeave={scheduleClose}>
               <button
-                className={`flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-150 [font-family:var(--font-body)] ${
+                className={`flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out [font-family:var(--font-body)] ${
                   openDropdown === "services"
                     ? "text-[var(--color-primary)] bg-[var(--color-primary-light)]/50"
-                    : "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50"
+                    : solid
+                    ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50"
+                    : "text-white/85 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Services
@@ -292,10 +315,12 @@ export default function Header() {
             {/* Laboratories trigger */}
             <div onMouseEnter={() => openMenu("labs")} onMouseLeave={scheduleClose}>
               <button
-                className={`flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-150 [font-family:var(--font-body)] ${
+                className={`flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out [font-family:var(--font-body)] ${
                   openDropdown === "labs"
                     ? "text-[var(--color-primary)] bg-[var(--color-primary-light)]/50"
-                    : "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50"
+                    : solid
+                    ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50"
+                    : "text-white/85 hover:text-white hover:bg-white/10"
                 }`}
               >
                 Laboratories
@@ -303,15 +328,21 @@ export default function Header() {
               </button>
             </div>
 
-            <a href="#FAQs" className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50 transition-colors duration-150">
+            <a href="#FAQs" className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out ${
+              solid ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50" : "text-white/85 hover:text-white hover:bg-white/10"
+            }`}>
               FAQs
             </a>
-            
-            <a href="#news" className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50 transition-colors duration-150">
+
+            <a href="#news" className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out ${
+              solid ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50" : "text-white/85 hover:text-white hover:bg-white/10"
+            }`}>
               News
             </a>
 
-            <a href="/about" className="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50 transition-colors duration-150">
+            <a href="/about" className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors duration-400 ease-in-out ${
+              solid ? "text-slate-600 hover:text-[var(--color-secondary)] hover:bg-slate-50" : "text-white/85 hover:text-white hover:bg-white/10"
+            }`}>
               About
             </a>
           </div>
@@ -319,14 +350,18 @@ export default function Header() {
           {/* CTA + hamburger */}
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
-              className="hidden lg:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-colors duration-200 shadow-sm shadow-[var(--color-primary)]/20"
+              href="#"
+              className={`hidden lg:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-400 ease-in-out ${
+                solid
+                  ? "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] shadow-sm shadow-[var(--color-primary)]/20"
+                  : "bg-white/15 text-white border border-white/30 hover:bg-white/25 backdrop-blur-sm"
+              }`}
             >
-              Get in Touch
+              Log In
             </a>
             <button
               onClick={() => { setMobileOpen(!mobileOpen); setMobileExpanded(null); }}
-              className="lg:hidden p-1 text-slate-600"
+              className={`lg:hidden p-1 transition-colors duration-400 ease-in-out ${solid ? "text-slate-600" : "text-white"}`}
               aria-label="Toggle menu"
             >
               {mobileOpen ? <IconClose /> : <IconMenu />}
@@ -334,7 +369,7 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* ── Mega dropdown: Services ── */}
+        {/* Services  */}
         <div
           className={`absolute top-full left-0 right-0 bg-white border-t border-[var(--color-border)] transition-all duration-200 ${
             openDropdown === "services"
@@ -348,7 +383,7 @@ export default function Header() {
           <ServicesMega onClose={closeNow} />
         </div>
 
-        {/* ── Mega dropdown: Laboratories ── */}
+        {/* Laboratories */}
         <div
           className={`absolute top-full left-0 right-0 bg-white border-t border-[var(--color-border)] transition-all duration-200 ${
             openDropdown === "labs"
@@ -362,7 +397,7 @@ export default function Header() {
           <LabsMega onClose={closeNow} />
         </div>
 
-        {/* ── Mobile menu ── */}
+        {/*  Mobile menu  */}
         <div
           className={`lg:hidden overflow-hidden transition-[max-height] duration-300 ease-in-out bg-white border-t border-[var(--color-border)] ${
             mobileOpen ? "max-h-[44rem]" : "max-h-0"

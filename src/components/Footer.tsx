@@ -51,14 +51,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#081929] text-white/60">
-      {/* ── Main grid ── */}
+      {/*  Main grid  */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
 
           {/* Col 1: Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/images/rrc_logo.png"
+              src="/images/rrc_logo_bnw.png"
               alt="UPV Regional Research Center"
               className="h-12 w-auto object-contain mb-5"
             />
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
+      {/*  Bottom bar  */}
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/30">
           <p>© {year} University of the Philippines Visayas. All rights reserved.</p>

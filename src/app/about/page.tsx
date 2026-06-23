@@ -17,24 +17,6 @@ function PersonIcon() {
   );
 }
 
-function IcoEye() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-}
-
-function IcoTarget() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
-  );
-}
 
 // Org chart card
 function OrgCard({
@@ -94,13 +76,13 @@ function DivisionLabel({ text }: { text: string }) {
   );
 }
 
-//    1. Banner                                           
+// Banner                                           
 function Banner() {
   return (
     <section className="relative h-[42vh] min-h-[280px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images/building.jpg"
+          src="/images/building.png"
           alt="UPV RRC Building"
           className="w-full h-full object-cover object-center"
         />
@@ -118,7 +100,7 @@ function Banner() {
   );
 }
 
-//    2. About Section                                     ──
+//    2. About Section                                     
 function AboutSection() {
   const fields1 = ["Applied Chemistry", "Food Science", "Microbiology & Bioengineering"];
   const fields2 = ["Biology", "Material Science & Nanotechnology", "Computational Science"];
@@ -208,45 +190,61 @@ function MissionVision() {
     <section className="relative py-28 lg:py-36 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img
-          src="/images/building.jpg"
-          alt=""
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           aria-hidden="true"
-          className="w-full h-full object-cover object-center scale-105"
-        />
+          className="w-full h-full object-cover object-center"
+        >
+          <source src="/images/mis-vis-bg.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[#081929]/92" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10">
         <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
           {/* Vision */}
-          <div className="flex flex-col items-center text-center bg-white/8 backdrop-blur-sm border border-white/12 rounded-2xl p-8 lg:p-10">
-            <div className="w-16 h-16 rounded-full bg-white/12 border border-white/20 flex items-center justify-center text-white mb-6">
-              <IcoEye />
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/8 backdrop-blur-sm">
+            <div className="h-52 overflow-hidden">
+              <img
+                src="/images/building.png"
+                alt="Vision"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
-            <h2 className="text-xl font-black text-white [font-family:var(--font-display)] mb-5">
-              Our Vision
-            </h2>
-            <p className="text-white/65 leading-relaxed text-sm">
-              A dynamic advanced research institution in the Philippines, internationally
-              recognized as a leader in innovations in the fields of Fisheries, Aquatic
-              Sciences, and Allied disciplines.
-            </p>
+            <div className="flex flex-col items-center text-center p-8 lg:p-10">
+              <h2 className="text-xl font-black text-white [font-family:var(--font-display)] mb-5">
+                Our Vision
+              </h2>
+              <p className="text-white/65 leading-relaxed text-sm">
+                A dynamic advanced research institution in the Philippines, internationally
+                recognized as a leader in innovations in the fields of Fisheries, Aquatic
+                Sciences, and Allied disciplines.
+              </p>
+            </div>
           </div>
 
           {/* Mission */}
-          <div className="flex flex-col items-center text-center bg-[var(--color-primary)]/15 backdrop-blur-sm border border-[var(--color-primary)]/25 rounded-2xl p-8 lg:p-10">
-            <div className="w-16 h-16 rounded-full bg-[var(--color-primary)]/30 border border-[var(--color-primary)]/40 flex items-center justify-center text-white mb-6">
-              <IcoTarget />
+          <div className="flex flex-col overflow-hidden rounded-2xl border border-[var(--color-primary)]/25 bg-[var(--color-primary)]/15 backdrop-blur-sm">
+            <div className="h-52 overflow-hidden">
+              <img
+                src="/images/about-sectionbg.png"
+                alt="Mission"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
-            <h2 className="text-xl font-black text-white [font-family:var(--font-display)] mb-5">
-              Our Mission
-            </h2>
-            <p className="text-white/65 leading-relaxed text-sm">
-              To establish UPV as a leader in multidisciplinary research in the fields of
-              Fisheries, Aquatic Sciences, and allied disciplines by serving as a hub of
-              knowledge and technology development, driven by the needs of society.
-            </p>
+            <div className="flex flex-col items-center text-center p-8 lg:p-10">
+              <h2 className="text-xl font-black text-white [font-family:var(--font-display)] mb-5">
+                Our Mission
+              </h2>
+              <p className="text-white/65 leading-relaxed text-sm">
+                To establish UPV as a leader in multidisciplinary research in the fields of
+                Fisheries, Aquatic Sciences, and allied disciplines by serving as a hub of
+                knowledge and technology development, driven by the needs of society.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -341,12 +339,12 @@ function OrgChart() {
   );
 }
 
-//    Page  ─
+// Page
 export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="pt-16 lg:pt-[72px] bg-[var(--color-bg)]">
+      <main className="bg-[var(--color-bg)]">
         <Banner />
         <AboutSection />
         <MissionVision />

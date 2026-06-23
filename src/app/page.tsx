@@ -86,7 +86,7 @@ function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images/building.jpg"
+          src="/images/building.png"
           alt="RRC Building"
           className="w-full h-full object-cover object-center"
         />
@@ -94,7 +94,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d2235]/80 via-transparent to-[#0d2235]/30" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pb-16 pt-20">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 mb-8">
             <div className="h-px w-8 bg-[var(--color-primary)]" />
@@ -113,10 +113,10 @@ function Hero() {
 
           <div className="w-16 h-[3px] bg-[var(--color-primary)] mb-6" />
 
-          <p className="text-base lg:text-lg text-white/75 leading-relaxed mb-10 max-w-xl">
-            Advancing scientific knowledge and regional development through
-            cutting-edge research, state-of-the-art facilities, and collaborative
-            partnerships across the Visayas.
+          <p className="text-md text-white/75 leading-relaxed mb-10 max-w-xl">
+            A centralized multidisciplinary facility that provides various services catering to different 
+            fields of natural and physical sciences, specifically - Applied Chemistry, Biology, Food Science, 
+            Material Science and Nanotechnology, Microbiology and Bioengineering, and Computational Sciences.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -243,7 +243,6 @@ function About() {
           <div className="grid grid-cols-1 gap-4">
             {[
               { title: "Five Research Laboratories", desc: "Applied Chemistry, Biology, Food Science, Material Science, and Microbiology." },
-              { title: "Philippine Genome Center Visayas", desc: "Omics research facility serving the entire Visayas region." },
               { title: "30+ Partner SUCs & HEIs", desc: "S&T capacity building network across Western Visayas and beyond." },
               { title: "Training & Extension Division", desc: "Workshops, method development, and equipment use programs." },
             ].map((item) => (
@@ -340,7 +339,7 @@ function News() {
             className="group lg:col-span-3 relative flex flex-col justify-end overflow-hidden rounded-2xl min-h-[420px]"
           >
             <img
-              src="/images/building.jpg"
+              src="/images/building.png"
               alt=""
               aria-hidden="true"
               className="absolute inset-0 w-full h-full object-cover object-center"
@@ -401,43 +400,112 @@ function News() {
   );
 }
 
-// Map / Contact
-function MapSection() {
+function ContactSection() {
+  const info = [
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      ),
+      label: "Our Address",
+      value: "University of the Philippines – Visayas, Miagao, Iloilo",
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M2 7l10 7 10-7" />
+        </svg>
+      ),
+      label: "Email Us",
+      value: "upvrrc@gmail.com",
+      href: "mailto:upvrrc@gmail.com",
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+        </svg>
+      ),
+      label: "Call Us",
+      value: "+63 912 345 6789",
+      href: "tel:+639123456789",
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6v6l4 2" />
+        </svg>
+      ),
+      label: "Opening Hours",
+      value: "Mon – Sat: 11AM – 11PM",
+      sub: "Sunday: Closed",
+    },
+  ];
+
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[var(--color-bg)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-8 bg-[var(--color-primary)]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
-                Find Us
-              </span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-black text-[var(--color-secondary)] leading-tight [font-family:var(--font-display)]">
-              Our Location
-            </h2>
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="h-px w-8 bg-[var(--color-primary)]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+              Get In Touch
+            </span>
           </div>
-          <div className="text-sm text-[var(--color-muted)] max-w-xs leading-relaxed">
-            <p className="font-semibold text-[var(--color-secondary)] mb-1">UPV Regional Research Center</p>
-            <p>University of the Philippines Visayas</p>
-            <p>Miagao, Iloilo 5023, Philippines</p>
-          </div>
+          <h2 className="text-4xl lg:text-5xl font-black text-[var(--color-secondary)] leading-tight [font-family:var(--font-display)]">
+            Contact Us
+          </h2>
         </div>
 
-        <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl">
-          <iframe
-            title="UPV RRC Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.2!2d122.2364!3d10.6419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aef2d2c6b2f0b3%3A0x1234567890abcdef!2sUniversity%20of%20the%20Philippines%20Visayas!5e0!3m2!1sen!2sph!4v1680000000000!5m2!1sen!2sph"
-            width="100%"
-            height="460"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="w-full block"
-          />
-        </div>
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Contact cards */}
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            {info.map((item) => (
+              <div
+                key={item.label}
+                className="flex items-start gap-4 p-5 rounded-2xl border border-[var(--color-border)] bg-white hover:border-[var(--color-primary)]/30 hover:shadow-md transition-all duration-200"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary)] flex items-center justify-center shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--color-primary)] mb-1">
+                    {item.label}
+                  </p>
+                  {item.href ? (
+                    <a href={item.href} className="text-sm font-medium text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-medium text-[var(--color-secondary)]">{item.value}</p>
+                  )}
+                  {"sub" in item && item.sub && (
+                    <p className="text-xs text-[var(--color-muted)] mt-0.5">{item.sub}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
 
+          {/* Map */}
+          <div className="lg:col-span-3 rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl min-h-[380px]">
+            <iframe
+              title="UPV RRC Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.2!2d122.2364!3d10.6419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aef2d2c6b2f0b3%3A0x1234567890abcdef!2sUniversity%20of%20the%20Philippines%20Visayas!5e0!3m2!1sen!2sph!4v1680000000000!5m2!1sen!2sph"
+              width="100%"
+              height="100%"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full block"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -446,13 +514,13 @@ function MapSection() {
 // Page
 export default function HomePage() {
   return (
-    <main className="bg-[var(--color-bg)] text-[var(--color-secondary)] pt-16 lg:pt-[72px]">
+    <main className="bg-[var(--color-bg)] text-[var(--color-secondary)]">
       <Header />
       <Hero />
       <Services />
       <About />
       <News />
-      <MapSection />
+      <ContactSection />
       <Footer />
     </main>
   );

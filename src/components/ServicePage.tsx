@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PROCESS_STEPS, SERVICE_NOTICES, SERVICE_CONTACT } from "@/data/services";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// ─ Types 
 export interface ServiceFeature {
   icon: ReactNode;
   title: string;
@@ -18,9 +18,10 @@ export interface ServicePageProps {
   overviewHeading: string;
   paragraphs: string[];
   features: ServiceFeature[];
+  children?: ReactNode;
 }
 
-// ─── Shared icons ─────────────────────────────────────────────────────────────
+// ─ Shared icons ─
 function IcoMail() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 shrink-0">
@@ -60,7 +61,7 @@ function IcoMail24() {
   );
 }
 
-// ─── 1. Hero ──────────────────────────────────────────────────────────────────
+// ─ 1. Hero 
 function Hero({
   title,
   subtitle,
@@ -76,7 +77,7 @@ function Hero({
     <section className="relative h-[44vh] min-h-[280px] flex items-end overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images/building.jpg"
+          src="/images/building.png"
           alt="RRC Building"
           className="w-full h-full object-cover object-center"
         />
@@ -113,7 +114,7 @@ function Hero({
   );
 }
 
-// ─── 2. Overview ──────────────────────────────────────────────────────────────
+// ─ 2. Overview 
 function Overview({
   heading,
   paragraphs,
@@ -196,7 +197,7 @@ function Overview({
   );
 }
 
-// ─── 3. Features ─────────────────────────────────────────────────────────────
+// ─ 3. Features ─
 function Features({ features }: { features: ServiceFeature[] }) {
   const accents = [
     "bg-[var(--color-primary-light)] text-[var(--color-primary)]",
@@ -229,7 +230,7 @@ function Features({ features }: { features: ServiceFeature[] }) {
   );
 }
 
-// ─── 4. Process ───────────────────────────────────────────────────────────────
+// ─ 4. Process ─
 function Process() {
   return (
     <section className="py-20 lg:py-28 bg-[var(--color-bg)]">
@@ -274,7 +275,7 @@ function Process() {
   );
 }
 
-// ─── 5. CTA ───────────────────────────────────────────────────────────────────
+// ─ 5. CTA ─
 function CTA({ title }: { title: string }) {
   return (
     <section className="py-20 bg-[var(--color-secondary)]">
@@ -311,7 +312,7 @@ function CTA({ title }: { title: string }) {
   );
 }
 
-// ─── Page shell ───────────────────────────────────────────────────────────────
+// Page shell
 export default function ServicePage({
   title,
   subtitle,
@@ -320,14 +321,16 @@ export default function ServicePage({
   overviewHeading,
   paragraphs,
   features,
+  children,
 }: ServicePageProps) {
   return (
     <>
       <Header />
-      <main className="pt-16 lg:pt-[72px] bg-[var(--color-bg)]">
+      <main className="bg-[var(--color-bg)]">
         <Hero title={title} subtitle={subtitle} breadcrumb={breadcrumb} icon={heroIcon} />
         <Overview heading={overviewHeading} paragraphs={paragraphs} />
         <Features features={features} />
+        {children}
         <Process />
         <CTA title={title} />
       </main>
