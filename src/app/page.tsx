@@ -94,7 +94,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d2235]/80 via-transparent to-[#0d2235]/30" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pb-16 pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pb-16 pt-20  ">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 mb-8">
             <div className="h-px w-8 bg-[var(--color-primary)]" />
@@ -103,7 +103,7 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl lg:text-7xl font-black leading-[1.0] tracking-tight text-white mb-6 [font-family:var(--font-display)]">
+          <h1 className="text-6xl lg:text-7xl font-black leading-[1.0] tracking-tight text-white mb-6 [font-family:var(--font-display)]">
             Regional
             <br />
             <span className="text-[var(--color-primary-light)]">Research</span>

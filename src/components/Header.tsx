@@ -252,7 +252,7 @@ export default function Header() {
     setOpenDropdown(null);
   };
 
-  const solid = scrolled || !!openDropdown;
+  const solid = scrolled || !!openDropdown || mobileOpen;
 
   return (
     <>
